@@ -3,13 +3,16 @@ import React from "react";
 const Sidebar = ({ isOpen }) => {
   return (
     <div
-      className={`fixed mt-15 left-0 h-full w-64 bg-[#F5F9F6] shadow-md p-4 overflow-auto transition-transform ${
+      className={`fixed top-15 left-0 pt-8 pb-22 overflow-y-scroll h-full w-64 bg-[#F5F9F6] shadow-md p-4 transition-transform ${
         isOpen ? "translate-x-0" : "-translate-x-full"
       } md:relative`}
+      style={{
+        scrollbarWidth: "thin",
+      }}
     >
       <div className="flex flex-col items-center gap-2">
         <img
-          src="/profile.jpg"
+          src="https://picsum.photos/300/300"
           alt="Profile"
           className="w-16 h-16 rounded-full object-cover"
         />
@@ -42,7 +45,7 @@ const Sidebar = ({ isOpen }) => {
       {/* Task Chart Section */}
       <div className="mt-6 p-4 bg-white rounded-lg shadow-sm">
         <div className="flex justify-between items-center text-sm text-gray-700">
-          <span className="font-semibold">Today Tasks</span>
+          <span className="font-semibold">Today's Tasks</span>
           <span className="cursor-pointer">ℹ️</span>
         </div>
         <p className="text-2xl font-bold text-gray-900">11</p>
