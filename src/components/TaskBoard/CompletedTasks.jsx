@@ -9,7 +9,7 @@ const CompletedTasks = ({ completedTasks, favorites, toggleFavorite }) => {
           {completedTasks.map((task, index) => (
             <li
               key={index}
-              className="flex items-center justify-between p-3 border-t hover:bg-gray-100"
+              className="flex items-center justify-between p-3 border-t border-[#496E4B33] hover:bg-gray-100"
             >
               {/* Checkbox and Task Name */}
               <div className="flex items-center gap-3">

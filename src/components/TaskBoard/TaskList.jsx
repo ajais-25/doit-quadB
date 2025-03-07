@@ -1,6 +1,15 @@
+import { useState } from "react";
 import { Star } from "lucide-react";
+import IndividualTask from "./IndividualTask";
 
-const TaskList = ({ tasks, completeTask, toggleFavorite, favorites }) => {
+const TaskList = ({
+  tasks,
+  completeTask,
+  toggleFavorite,
+  favorites,
+  removeTask,
+  setSelectedTask, // Add setSelectedTask prop
+}) => {
   return (
     <div className="p-4 w-full">
       {tasks.length > 0 ? (
@@ -8,7 +17,7 @@ const TaskList = ({ tasks, completeTask, toggleFavorite, favorites }) => {
           {tasks.map((task, index) => (
             <li
               key={index}
-              className="flex items-center justify-between p-3 border-b hover:bg-gray-100"
+              className="flex items-center justify-between p-3 border-b border-[#496E4B33] hover:bg-gray-100"
             >
               {/* Checkbox and Task Name */}
               <div className="flex items-center gap-3">
@@ -19,7 +28,12 @@ const TaskList = ({ tasks, completeTask, toggleFavorite, favorites }) => {
                     hover:border-green-500 transition-colors duration-300
                   "
                 ></div>
-                <span className="text-gray-800">{task}</span>
+                <span
+                  className="text-gray-800 cursor-pointer hover:underline"
+                  onClick={() => setSelectedTask(task)}
+                >
+                  {task}
+                </span>
               </div>
 
               {/* Favorite (Star) Icon */}
