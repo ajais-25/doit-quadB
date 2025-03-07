@@ -29,7 +29,7 @@ const TaskHeader = ({ addTask }) => {
           type="text"
           name="task"
           id="task"
-          className="w-full pb-20 p-2 border rounded-lg"
+          className="w-full pb-20 p-2 border-0 rounded-lg"
           value={task}
           onChange={(e) => setTask(e.target.value)}
           onKeyDown={handleKeyPress}
