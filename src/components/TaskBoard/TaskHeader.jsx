@@ -2,7 +2,7 @@ import React, { useState, useId } from "react";
 import { Bell, Calendar, ChevronDown } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { addTask } from "../../features/taskSlice";
-import Repeat from "../../assets/RightBar/Repeat.png";
+import Repeat from "../../assets/RightBar/repeat.png";
 
 const TaskHeader = () => {
   const [task, setTask] = useState("");

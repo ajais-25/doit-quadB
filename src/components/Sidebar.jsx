@@ -1,11 +1,11 @@
 import { Star } from "lucide-react";
-import Avatar from "../assets/Sidebar/Avatar.png";
-import Menu from "../assets/Sidebar/Menu/Menu.png";
-import Calendar from "../assets/Sidebar/Menu/Calendar.png";
-import Clock from "../assets/Sidebar/Menu/Clock.png";
-import Assign from "../assets/Sidebar/Menu/Assign.png";
-import Plus from "../assets/Sidebar/Menu/Plus.png";
-import Info from "../assets/Sidebar/Menu/Info.png";
+import Avatar from "../assets/Sidebar/avatar.png";
+import Menu from "../assets/Sidebar/Menu/menu.png";
+import Calendar from "../assets/Sidebar/Menu/calendar.png";
+import Clock from "../assets/Sidebar/Menu/clock.png";
+import Assign from "../assets/Sidebar/Menu/assign.png";
+import Plus from "../assets/Sidebar/Menu/plus.png";
+import Info from "../assets/Sidebar/Menu/info.png";
 import CircularProgress from "./CircularProgress";
 
 const Sidebar = (isOpen) => {

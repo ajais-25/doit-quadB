@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import { completeTask, toggleStar, removeTask } from "../../features/taskSlice";
 import { useDispatch } from "react-redux";
-import Repeat from "../../assets/RightBar/Repeat.png";
+import Repeat from "../../assets/RightBar/repeat.png";
 import BasicDateCalendar from "../BasicDateCalendar";
 
 const IndividualTask = ({ task, isTaskStarred, onClose }) => {

@@ -1,11 +1,11 @@
 import React from "react";
-import { Menu, Search, Moon } from "lucide-react";
+import { Menu, Search } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleView } from "../features/taskSlice";
 import Logo from "../assets/logo.png";
-import Grid from "../assets/View/Grid.png";
-import List from "../assets/View/List.png";
-import Dark from "../assets/Theme/Dark.png";
+import Grid from "../assets/View/grid.png";
+import List from "../assets/View/list.png";
+import Dark from "../assets/Theme/dark.png";
 
 const TopBar = ({ toggleSidebar }) => {
   const dispatch = useDispatch();
