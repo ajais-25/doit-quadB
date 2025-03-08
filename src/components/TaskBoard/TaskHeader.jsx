@@ -1,7 +1,8 @@
 import React, { useState, useId } from "react";
-import { Bell, RefreshCcw, Calendar, ChevronDown } from "lucide-react";
+import { Bell, Calendar, ChevronDown } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { addTask } from "../../features/taskSlice";
+import Repeat from "../../assets/RightBar/Repeat.png";
 
 const TaskHeader = () => {
   const [task, setTask] = useState("");
@@ -45,7 +46,7 @@ const TaskHeader = () => {
         {/* Icons Section */}
         <div className="flex space-x-4 mt-2 md:mt-0">
           <Bell className="text-gray-700 cursor-pointer" size={20} />
-          <RefreshCcw className="text-gray-700 cursor-pointer" size={20} />
+          <img src={Repeat} alt="repeat" />
           <Calendar className="text-gray-700 cursor-pointer" size={20} />
         </div>
 

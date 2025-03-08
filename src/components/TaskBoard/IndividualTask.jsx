@@ -3,7 +3,6 @@ import {
   Calendar as CalendarIcon,
   Plus,
   Bell,
-  Repeat,
   Trash,
   Star,
   X,
@@ -17,6 +16,7 @@ import { Calendar } from "@/components/ui/calendar";
 import { format } from "date-fns";
 import { completeTask, toggleStar, removeTask } from "../../features/taskSlice";
 import { useDispatch } from "react-redux";
+import Repeat from "../../assets/RightBar/Repeat.png";
 
 const IndividualTask = ({ task, isTaskStarred, onClose }) => {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -97,7 +97,10 @@ const IndividualTask = ({ task, isTaskStarred, onClose }) => {
         </Popover>
 
         <button className="flex items-center gap-2 w-full p-2 rounded-md hover:bg-green-100 cursor-pointer">
-          <Repeat className="w-5 h-5" /> Repeat
+          <div className="flex items-center gap-2">
+            <img src={Repeat} alt="repeat" className="" />
+            <span>Repeat</span>
+          </div>
         </button>
         <textarea
           className="w-full p-2 mt-2 rounded-md border bg-white"
