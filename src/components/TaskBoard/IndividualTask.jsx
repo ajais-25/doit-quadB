@@ -45,7 +45,10 @@ const IndividualTask = ({
         {/* Checkbox and Task Name */}
         <div className="flex items-center gap-3">
           <div
-            onClick={() => completeTask(index)}
+            onClick={() => {
+              completeTask(index);
+              onClose();
+            }}
             className="cursor-pointer w-5 h-5
                     border-2 border-gray-400 rounded-sm flex items-center justify-center
                     hover:border-green-500 transition-colors duration-300
@@ -111,7 +114,13 @@ const IndividualTask = ({
           onClick={onClose}
         />
         <span className="text-sm text-gray-500">Created Today</span>
-        <Trash className="w-5 h-5 cursor-pointer text-gray-500 hover:text-red-500" />
+        <Trash
+          className="w-5 h-5 cursor-pointer text-gray-500 hover:text-red-500"
+          onClick={() => {
+            removeTask(index);
+            onClose();
+          }}
+        />
       </div>
     </div>
   );

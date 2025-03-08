@@ -48,10 +48,10 @@ const TaskBoard = () => {
         <TaskHeader addTask={addTask} />
         <TaskList
           tasks={tasks}
+          onClose={() => setSelectedTask(null)}
           completeTask={completeTask}
           toggleFavorite={toggleFavorite}
           favorites={favorites}
-          removeTask={removeTask}
           setSelectedTask={setSelectedTask} // Pass setSelectedTask to TaskList
         />
         <CompletedTasks
