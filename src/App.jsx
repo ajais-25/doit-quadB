@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="flex">
       <div
-        className={`fixed h-screen z-50 overflow-hidden transition-all duration-300 ${
+        className={`fixed h-screen z-50 overflow-hidden pt-28 transition-all duration-300 ${
           isSidebarOpen ? "w-80" : "w-0"
         }`}
       >

@@ -33,9 +33,7 @@ const IndividualTask = ({ task, isTaskStarred, onClose }) => {
 
   return (
     <div
-      className={`fixed top-0 bottom-0 mt-15 right-0 z-40 w-full md:w-[350px] bg-green-50 shadow-lg border-l p-4 flex flex-col transition-transform duration-500 ease-in-out transform ${
-        isMobile ? "translate-x-0" : "translate-x-0"
-      }`}
+      className={`fixed top-0 bottom-0 mt-15 right-0 z-60 w-full md:w-[350px] bg-green-50 shadow-lg border-l p-4 flex flex-col transition-all duration-300 ease-in-out`}
     >
       {/* Task Header */}
       <div className="flex items-center justify-between p-3 border-y border-[#496E4B33]">

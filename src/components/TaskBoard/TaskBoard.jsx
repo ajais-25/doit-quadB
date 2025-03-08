@@ -8,7 +8,7 @@ const TaskBoard = () => {
   const [selectedTask, setSelectedTask] = useState(null); // State to manage selected task
 
   return (
-    <div className="flex mt-16 px-8 pt-6 w-full min-h-screen bg-gray-100">
+    <div className="flex mt-16 px-8 pt-6 w-full min-h-screen">
       <div
         className={`flex flex-col items-center ${
           selectedTask ? "w-[calc(100%-350px)]" : "w-full"
