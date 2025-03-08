@@ -15,18 +15,15 @@ import {
 } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
 import { format } from "date-fns";
+import { completeTask, toggleStar, removeTask } from "../../features/taskSlice";
+import { useDispatch } from "react-redux";
 
-const IndividualTask = ({
-  task,
-  onClose,
-  completeTask,
-  favorites,
-  toggleFavorite,
-  index,
-  removeTask,
-}) => {
+const IndividualTask = ({ task, isTaskStarred, onClose }) => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isStarred, setIsStarred] = useState(isTaskStarred);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
@@ -46,7 +43,7 @@ const IndividualTask = ({
         <div className="flex items-center gap-3">
           <div
             onClick={() => {
-              completeTask(index);
+              dispatch(completeTask(task.id));
               onClose();
             }}
             className="cursor-pointer w-5 h-5
@@ -54,15 +51,18 @@ const IndividualTask = ({
                     hover:border-green-500 transition-colors duration-300
                   "
           ></div>
-          <span className="text-gray-800">{task}</span>
+          <span className="text-gray-800">{task.task}</span>
         </div>
 
         {/* Favorite (Star) Icon */}
         <Star
           className={`w-5 h-5 cursor-pointer ${
-            favorites.includes(task) ? "fill-black text-black" : "text-gray-400"
+            isStarred ? "fill-black text-black" : "text-gray-400"
           }`}
-          onClick={() => toggleFavorite(task)}
+          onClick={() => {
+            dispatch(toggleStar(task.id));
+            setIsStarred(!isStarred);
+          }}
         />
       </div>
 
@@ -117,7 +117,7 @@ const IndividualTask = ({
         <Trash
           className="w-5 h-5 cursor-pointer text-gray-500 hover:text-red-500"
           onClick={() => {
-            removeTask(index);
+            dispatch(removeTask(task.id));
             onClose();
           }}
         />

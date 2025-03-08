@@ -1,13 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useId } from "react";
 import { Bell, RefreshCcw, Calendar, ChevronDown } from "lucide-react";
+import { useDispatch } from "react-redux";
+import { addTask } from "../../features/taskSlice";
 
-const TaskHeader = ({ addTask }) => {
+const TaskHeader = () => {
   const [task, setTask] = useState("");
+  const dispatch = useDispatch();
+  const id = useId();
 
   const handleAddTask = () => {
-    if (task.trim()) {
-      addTask(task);
-      setTask(""); // Clear input
+    if (task) {
+      dispatch(addTask(task, id));
+      setTask("");
     }
   };
 
