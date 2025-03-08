@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  gridView: false,
   tasks: [
     {
       id: 1,
@@ -27,6 +28,9 @@ const taskSlice = createSlice({
   name: "tasks",
   initialState,
   reducers: {
+    toggleView: (state) => {
+      state.gridView = !state.gridView;
+    },
     addTask: (state, action) => {
       const newTask = {
         id: action.payload,
@@ -50,6 +54,6 @@ const taskSlice = createSlice({
   },
 });
 
-export const { addTask, removeTask, completeTask, toggleStar } =
+export const { toggleView, addTask, removeTask, completeTask, toggleStar } =
   taskSlice.actions;
 export default taskSlice.reducer;

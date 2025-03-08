@@ -14,7 +14,7 @@ function App() {
     <div className="flex">
       <div
         className={`fixed h-screen z-50 overflow-hidden transition-all duration-300 ${
-          isSidebarOpen ? "w-64" : "w-0"
+          isSidebarOpen ? "w-80" : "w-0"
         }`}
       >
         <TopBar toggleSidebar={toggleSidebar} />
@@ -22,7 +22,7 @@ function App() {
       </div>
       <div
         className={`flex-grow transition-all duration-300 ${
-          isSidebarOpen ? "ml-64" : "ml-0"
+          isSidebarOpen ? "ml-70" : "ml-0"
         }`}
       >
         <TaskBoard />

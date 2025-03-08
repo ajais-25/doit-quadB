@@ -1,9 +1,13 @@
 import React from "react";
 import { Menu, Search, Grid, Moon } from "lucide-react";
+import { useDispatch } from "react-redux";
+import { toggleView } from "../features/taskSlice";
 
 const TopBar = ({ toggleSidebar }) => {
+  const dispatch = useDispatch();
+
   return (
-    <div className="flex items-center justify-between p-4 border-b shadow-sm bg-white w-full fixed top-0 left-0 right-0 z-50">
+    <div className="flex items-center justify-between p-4 px-8 border-b shadow-sm bg-white w-full fixed top-0 left-0 right-0 z-50">
       {/* Left Section */}
       <div className="flex items-center gap-3">
         <Menu className="w-6 h-6 cursor-pointer" onClick={toggleSidebar} />
@@ -16,7 +20,10 @@ const TopBar = ({ toggleSidebar }) => {
       {/* Right Section */}
       <div className="flex items-center gap-4">
         <Search className="w-5 h-5 cursor-pointer hidden md:block" />
-        <Grid className="w-5 h-5 cursor-pointer" />
+        <Grid
+          className="w-5 h-5 cursor-pointer"
+          onClick={() => dispatch(toggleView())}
+        />
         <Moon className="w-5 h-5 cursor-pointer" />
       </div>
     </div>

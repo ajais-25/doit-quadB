@@ -33,7 +33,7 @@ const IndividualTask = ({ task, isTaskStarred, onClose }) => {
 
   return (
     <div
-      className={`fixed top-0 bottom-0 mt-15 right-0 w-full md:w-[350px] bg-green-50 shadow-lg border-l p-4 flex flex-col transition-transform duration-500 ease-in-out transform ${
+      className={`fixed top-0 bottom-0 mt-15 right-0 z-40 w-full md:w-[350px] bg-green-50 shadow-lg border-l p-4 flex flex-col transition-transform duration-500 ease-in-out transform ${
         isMobile ? "translate-x-0" : "translate-x-0"
       }`}
     >

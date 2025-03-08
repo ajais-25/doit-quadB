@@ -3,7 +3,7 @@ import React from "react";
 const Sidebar = ({ isOpen }) => {
   return (
     <div
-      className={`fixed top-15 left-0 pt-8 pb-22 overflow-y-scroll h-full w-64 bg-[#F5F9F6] shadow-md p-4 transition-transform ${
+      className={`fixed top-15 left-10 pt-8 pb-22 overflow-y-scroll h-full w-64 bg-[#F5F9F6] shadow-md p-4 transition-transform ${
         isOpen ? "translate-x-0" : "-translate-x-full"
       } md:relative`}
       style={{
