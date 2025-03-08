@@ -35,7 +35,7 @@ const IndividualTask = ({ task, isTaskStarred, onClose }) => {
       {/* Task Header */}
       <div className="flex items-center justify-between p-3 border-y border-[#496E4B33]">
         {/* Checkbox and Task Name */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 flex-grow">
           <div
             onClick={() => {
               dispatch(completeTask(task.id));
@@ -43,15 +43,15 @@ const IndividualTask = ({ task, isTaskStarred, onClose }) => {
             }}
             className="cursor-pointer w-5 h-5
                     border-2 border-gray-400 rounded-sm flex items-center justify-center
-                    hover:border-green-500 transition-colors duration-300
+                    hover:border-green-500 transition-colors duration-300 flex-shrink-0
                   "
           ></div>
-          <span className="text-gray-800">{task.task}</span>
+          <span className="text-gray-800 flex-grow">{task.task}</span>
         </div>
 
         {/* Favorite (Star) Icon */}
         <Star
-          className={`w-5 h-5 cursor-pointer ${
+          className={`w-5 h-5 cursor-pointer flex-shrink-0 ${
             isStarred ? "fill-black text-black" : "text-gray-400"
           }`}
           onClick={() => {
