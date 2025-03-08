@@ -1,32 +1,43 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
+export const getTasks = createAsyncThunk("getTasks", async () => {
+  const response = await fetch("https://dummyjson.com/todos?limit=5&skip=0");
+  const data = await response.json();
+  return data.todos;
+});
 
 const initialState = {
   gridView: false,
-  tasks: [
-    {
-      id: 1,
-      task: "Task 1",
-      starred: false,
-      completed: false,
-    },
-    {
-      id: 2,
-      task: "Task 2",
-      starred: false,
-      completed: false,
-    },
-    {
-      id: 3,
-      task: "Task 3",
-      starred: false,
-      completed: false,
-    },
-  ],
+  tasks: [],
+  isLoading: false,
+  isError: false,
 };
 
 const taskSlice = createSlice({
   name: "tasks",
   initialState,
+  extraReducers: (builder) => {
+    builder.addCase(getTasks.fulfilled, (state, action) => {
+      const tasks = action.payload.map((task) => ({
+        id: task.id,
+        task: task.todo,
+        starred: false,
+        completed: false,
+      }));
+      state.isLoading = false;
+      state.isError = false;
+      state.tasks = tasks;
+    });
+    builder.addCase(getTasks.rejected, (state, action) => {
+      state.tasks = [];
+      state.isError = true;
+      state.isLoading = false;
+    });
+    builder.addCase(getTasks.pending, (state, action) => {
+      state.tasks = [];
+      state.isLoading = true;
+    });
+  },
   reducers: {
     toggleView: (state) => {
       state.gridView = !state.gridView;

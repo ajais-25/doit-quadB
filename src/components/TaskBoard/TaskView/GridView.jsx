@@ -4,10 +4,18 @@ import { useDispatch, useSelector } from "react-redux";
 
 const GridView = ({ onClose, setSelectedTask }) => {
   const dispatch = useDispatch();
-  const tasks = useSelector((state) => state.tasks.tasks);
+  const state = useSelector((state) => state.tasks);
+
+  const tasks = state.tasks;
 
   return (
     <div className="p-4 w-full">
+      {state.isLoading && (
+        <p className="text-gray-500 text-center">Loading...</p>
+      )}
+      {state.isError && (
+        <p className="text-red-500 text-center">An error occurred.</p>
+      )}
       {tasks ? (
         <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {tasks.map(

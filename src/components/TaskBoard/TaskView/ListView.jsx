@@ -4,11 +4,19 @@ import { useDispatch, useSelector } from "react-redux";
 
 const ListView = ({ onClose, setSelectedTask }) => {
   const dispatch = useDispatch();
-  const tasks = useSelector((state) => state.tasks.tasks);
+  const state = useSelector((state) => state.tasks);
+
+  const tasks = state.tasks;
 
   return (
     <>
       <div className="p-4 w-full">
+        {state.isLoading && (
+          <p className="text-gray-500 text-center">Loading...</p>
+        )}
+        {state.isError && (
+          <p className="text-red-500 text-center">An error occurred.</p>
+        )}
         {tasks ? (
           <ul className="space-y-2">
             {tasks.map(

@@ -1,12 +1,20 @@
+import { useEffect } from "react";
 import GridView from "./TaskView/GridView";
 import ListView from "./TaskView/ListView";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getTasks } from "../../features/taskSlice";
 
 const TaskList = ({
   onClose,
   setSelectedTask, // Add setSelectedTask prop
 }) => {
   const gridView = useSelector((state) => state.tasks.gridView);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getTasks());
+  }, []);
 
   return (
     <>
