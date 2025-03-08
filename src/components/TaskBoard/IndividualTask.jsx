@@ -7,21 +7,15 @@ import {
   Star,
   X,
 } from "lucide-react";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { Calendar } from "@/components/ui/calendar";
-import { format } from "date-fns";
 import { completeTask, toggleStar, removeTask } from "../../features/taskSlice";
 import { useDispatch } from "react-redux";
 import Repeat from "../../assets/RightBar/Repeat.png";
+import BasicDateCalendar from "../BasicDateCalendar";
 
 const IndividualTask = ({ task, isTaskStarred, onClose }) => {
-  const [selectedDate, setSelectedDate] = useState(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [isStarred, setIsStarred] = useState(isTaskStarred);
+  const [showCalendar, setShowCalendar] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -33,7 +27,10 @@ const IndividualTask = ({ task, isTaskStarred, onClose }) => {
 
   return (
     <div
-      className={`fixed top-0 bottom-0 mt-15 right-0 z-60 w-full md:w-[350px] bg-green-50 shadow-lg border-l p-4 flex flex-col transition-all duration-300 ease-in-out`}
+      className={`fixed top-0 bottom-0 overflow-x-hidden overflow-y-scroll mt-15 right-0 z-60 w-full md:w-[350px] bg-green-50 shadow-lg border-l p-4 flex flex-col transition-all duration-300 ease-in-out`}
+      style={{
+        scrollbarWidth: "thin",
+      }}
     >
       {/* Task Header */}
       <div className="flex items-center justify-between p-3 border-y border-[#496E4B33]">
@@ -74,27 +71,14 @@ const IndividualTask = ({ task, isTaskStarred, onClose }) => {
         </button>
 
         {/* Date Picker */}
-        <Popover>
-          <PopoverTrigger asChild>
-            <button className="flex items-center justify-between w-full p-2 rounded-md hover:bg-green-100 cursor-pointer">
-              <span className="flex items-center gap-2">
-                <CalendarIcon className="w-5 h-5" /> Add Due Date
-              </span>
-              {selectedDate && (
-                <span className="text-sm">
-                  {format(selectedDate, "MMM dd")}
-                </span>
-              )}
-            </button>
-          </PopoverTrigger>
-          <PopoverContent className="p-2">
-            <Calendar
-              mode="single"
-              selected={selectedDate}
-              onSelect={setSelectedDate}
-            />
-          </PopoverContent>
-        </Popover>
+        {showCalendar && <BasicDateCalendar />}
+        <button
+          className="flex items-center gap-2 w-full p-2 rounded-md hover:bg-green-100 cursor-pointer"
+          onClick={() => setShowCalendar(!showCalendar)}
+        >
+          <CalendarIcon className="w-5 h-5" />
+          {showCalendar ? "Close Calendar" : "Add to Calendar"}
+        </button>
 
         <button className="flex items-center gap-2 w-full p-2 rounded-md hover:bg-green-100 cursor-pointer">
           <div className="flex items-center gap-2">
