@@ -1,33 +1,36 @@
-import { useState } from "react";
-import Sidebar from "./components/Sidebar";
-import TopBar from "./components/TopBar";
-import TaskBoard from "./components/TaskBoard/TaskBoard";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import Layout from "./Layout";
+import TaskBoard from "./pages/TaskBoard";
+import Login from "./pages/Login";
+import { useSelector } from "react-redux";
+
+const ProtectedRoute = ({ element }) => {
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+
+  return isLoggedIn ? element : <Navigate to="/login" />;
+};
 
 function App() {
-  const [isSidebarOpen, setSidebarOpen] = useState(false);
-
-  const toggleSidebar = () => {
-    setSidebarOpen(!isSidebarOpen);
-  };
-
   return (
-    <div className="flex">
-      <div
-        className={`fixed h-screen z-50 overflow-hidden pt-28 transition-all duration-300 ${
-          isSidebarOpen ? "w-80" : "w-0"
-        }`}
-      >
-        <TopBar toggleSidebar={toggleSidebar} />
-        <Sidebar isOpen={isSidebarOpen} />
-      </div>
-      <div
-        className={`flex-grow transition-all duration-300 ${
-          isSidebarOpen ? "ml-70" : "ml-0"
-        }`}
-      >
-        <TaskBoard />
-      </div>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Layout />}>
+          <Route
+            path="/"
+            element={<ProtectedRoute element={<TaskBoard />} />}
+          />
+        </Route>
+        <Route
+          path="*"
+          element={
+            <div className="h-screen w-screen flex justify-center items-center">
+              404 Page Not Found
+            </div>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

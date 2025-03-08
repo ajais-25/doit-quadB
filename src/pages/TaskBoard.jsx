@@ -1,7 +1,7 @@
-import TaskHeader from "./TaskHeader";
-import TaskList from "./TaskList";
-import CompletedTasks from "./CompletedTasks";
-import IndividualTask from "./IndividualTask"; // Import IndividualTask
+import TaskHeader from "../components/TaskBoard/TaskHeader";
+import TaskList from "../components/TaskBoard/TaskList";
+import CompletedTasks from "../components/TaskBoard/CompletedTasks";
+import IndividualTask from "../components/TaskBoard/IndividualTask";
 import { useState } from "react";
 
 const TaskBoard = () => {
